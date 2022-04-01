@@ -4,10 +4,10 @@ import "./ExpenseItem.css";
 import Card from "../UI/Card";
 
 function ExpenseItem(props) {
-  let title = props.title;
+  const [title, setTitle] = useState(props.title);
 
   function clickHandler() {
-    alert("clicked");
+    setTitle("updated!");
   }
 
   return (
@@ -33,6 +33,19 @@ export default ExpenseItem;
 // The problem with this is React evaluates everything once, when the app is initially rendered.
 // In modern apps typically want to update elements on screen e.g when button clicked- need a way of telling react something changed and to re-evaluate certain components => State
 
-// Import useState in curly brackets- useState is a function
-// Using useState--> Call it in Component function before jsx return statement--> function() { useState() return} ;
+// Import { useState } in curly brackets- useState is a function
+// useState() returns an array of 2 elements- current value AND Updating function
+// Using useState--> Call it in Component function before jsx return statement--> function() { useState(); return } ;
+// useState wants a default initial state value--> creates "special variable" where changes leads to component re-evalution.
 // useState is a Hook- All Hooks start with "use"
+
+// If there is data that changes and should be reflected in UI- Need to use State
+
+// useState(initial value)
+// |
+// |
+// v
+// const [variable current state, updating function] = useState(initial value)
+// Array destructuring technique above stores both elements in separate variables
+
+// State is separated on a per component instance basis
