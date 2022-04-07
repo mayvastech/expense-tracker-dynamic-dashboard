@@ -1,13 +1,17 @@
 import "./NewExpense.css";
 
 function NewExpense() {
+
+  function titleChangeHandler (event) {
+    console.log(event.target.value)
+  }
   return (
     <div className="new-expense">
       <form action="">
         <div className="new-expense__controls">
           <div className="new-expense__control">
             <label htmlFor="">Title</label>
-            <input type="text" />
+            <input type="text" onChange={titleChangeHandler} />
           </div>
 
           <div className="new-expense__control">
@@ -28,3 +32,6 @@ function NewExpense() {
   );
 }
 export default NewExpense;
+
+
+// onChange event listener listens for input field value change. Useful for React forms
