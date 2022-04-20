@@ -2,22 +2,38 @@ import "./NewExpense.css";
 import { useState } from "react";
 
 function NewExpense() {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
-
-  // initial state of input should be empty string as nothing is entered. Value of inputs are ALWAYS STRING
+  // const [enteredTitle, setEnteredTitle] = useState("");
+  // const [enteredAmount, setEnteredAmount] = useState("");
+  // const [enteredDate, setEnteredDate] = useState("");
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
+  // All 3 states related to store user input form- so use 1 State which stores others in a State object
+  // initial state of input should be empty string as nothing is entered. Value of changeevent inputs are ALWAYS STRING
   // Using State to store user entered value into a variable if component reloads
+
   function titleChangeHandler(event) {
-    setEnteredTitle(event.target.value);
+    // spread operator extracts values in userInput
+    setUserInput({
+      ...userInput,
+      enteredTitle: event.target.value,
+    });
   }
 
   function amountChangeHandler(event) {
-    setEnteredAmount(event.target.value);
+    setUserInput({
+      ...userInput,
+      enteredAmount: event.target.value,
+    });
   }
 
   function dateChangeHandler(event) {
-    setEnteredDate(event.target.value);
+    setUserInput({
+      ...userInput,
+      enteredDate: event.target.value,
+    });
   }
 
   return (
@@ -59,7 +75,7 @@ function NewExpense() {
 }
 export default NewExpense;
 
-// Use Handler word in function as a convention to ddscribe upon user event
+// Use Handler word in function as a convention to describe upon user event
 // onChange event listener listens for input field value change. Useful for React forms
 
 // An onChange event handler returns an Event object which contains useful metadata- target input’s id, name, and current value.
