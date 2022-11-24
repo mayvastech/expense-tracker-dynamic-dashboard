@@ -5,6 +5,7 @@ function NewExpense() {
   // const [enteredTitle, setEnteredTitle] = useState("");
   // const [enteredAmount, setEnteredAmount] = useState("");
   // const [enteredDate, setEnteredDate] = useState("");
+  // useState to save form value into a variable if component reloads
   const [userInput, setUserInput] = useState({
     enteredTitle: "",
     enteredAmount: "",
@@ -12,7 +13,6 @@ function NewExpense() {
   });
   // All 3 states related to store user input form- so use 1 State which stores others in a State object
   // initial state of input should be empty string as nothing is entered. Value of changeevent inputs are ALWAYS STRING
-  // Using State to store user entered value into a variable if component reloads
 
   function titleChangeHandler(event) {
     // spread operator extracts values in userInput
