@@ -15,13 +15,14 @@ function NewExpense() {
   // initial state of input should be empty string as nothing is entered. Value of changeevent inputs are ALWAYS STRING
 
   function titleChangeHandler(event) {
-    // spread operator extracts and retains the other saved values in userInput i.e enteredAmount and enteredDate
-    // Spread operator first as it saves all 3 userInput state object values and just overwrites the enteredTitle
+    // setEnteredTitle(event.target.value) Repeat this line for other 2 States IF USING individual State slices method
     setUserInput({
       ...userInput,
       enteredTitle: event.target.value,
     });
   }
+  // spread operator extracts and retains the other saved values in userInput i.e enteredAmount and enteredDate
+  // Spread operator first as it saves all 3 userInput state object values and just overwrites the enteredTitle
 
   function amountChangeHandler(event) {
     setUserInput({
