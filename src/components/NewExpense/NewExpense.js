@@ -15,7 +15,7 @@ function NewExpense() {
   // initial state of input should be empty string as nothing is entered. Value of changeevent inputs are ALWAYS STRING
 
   function titleChangeHandler(event) {
-    // spread operator extracts values in userInput
+    // spread operator extracts and retains the other saved values in userInput i.e enteredAmount and enteredDate
     setUserInput({
       ...userInput,
       enteredTitle: event.target.value,
