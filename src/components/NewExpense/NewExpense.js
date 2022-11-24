@@ -16,6 +16,7 @@ function NewExpense() {
 
   function titleChangeHandler(event) {
     // spread operator extracts and retains the other saved values in userInput i.e enteredAmount and enteredDate
+    // Spread operator first as it saves all 3 userInput state object values and just overwrites the enteredTitle
     setUserInput({
       ...userInput,
       enteredTitle: event.target.value,
