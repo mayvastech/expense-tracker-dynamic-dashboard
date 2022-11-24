@@ -75,7 +75,7 @@ function NewExpense() {
 }
 export default NewExpense;
 
-// Use Handler word in function as a convention to describe upon user event
+// Use Handler word in event-listener function as a convention to describe a function executing upon user event
 // onChange event listener listens for input field value change. Useful for React forms. onInput and onChange both listen for keystrokes but onChange is universal for all input types including dropdowns.
 
 // An onChange event handler returns an Event object which contains useful metadata- target input’s id, name, and current value.
