@@ -7,7 +7,7 @@ function NewExpense() {
   const [enteredDate, setEnteredDate] = useState("");
   // useState to save form value into a variable if component reloads
   // initial state of input should be empty string as nothing is entered. Value of changeevent inputs are ALWAYS STRING
-  
+
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: "",
   //   enteredAmount: "",
@@ -22,7 +22,7 @@ function NewExpense() {
     //   enteredTitle: event.target.value,
     // });
     // Above technique may not obtain latest state snapshot as react schedules state updates and if lots of states are scheduled it may obtain an older state than the latest when copying in old states via spread oeprator in the combined state approach
-    
+
     // setUserInput(function (prevState) {
     //   return { ...prevState, enteredTitle: event.target.value };
     // });
@@ -32,7 +32,7 @@ function NewExpense() {
   // Spread operator first as it saves all 3 userInput state object values and just overwrites the enteredTitle
 
   function amountChangeHandler(event) {
-    setEnteredAmount(event.target.value)
+    setEnteredAmount(event.target.value);
     // setUserInput({
     //   ...userInput,
     //   enteredAmount: event.target.value,
@@ -40,16 +40,30 @@ function NewExpense() {
   }
 
   function dateChangeHandler(event) {
-    setEnteredDate(event.target.value)
+    setEnteredDate(event.target.value);
     // setUserInput({
     //   ...userInput,
     //   enteredDate: event.target.value,
     // });
   }
 
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    console.log(expenseData);
+  }
+  // When form is submitted it will gather the 3 current state user-input values and combine them into 1 Object expenseData.
+  // Prevent browser request being sent to server hosting the webpage (dev server in this case) resulting in page reloading. We want to manually handle the submission with JS to collect the data
+
   return (
     <div className="new-expense">
-      <form action="">
+      <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           {/* Form Input Controls */}
           <div className="new-expense__control">
@@ -85,6 +99,8 @@ function NewExpense() {
   );
 }
 export default NewExpense;
+
+// Dont use onClick event listener on submit button- put event listener on the form element (default behaviour in browser/forms whereby upon submit button click the form element will emit a submit event)
 
 // Use Handler word in event-listener function as a convention to describe a function executing upon user event
 // onChange event listener listens for input field value change. Useful for React forms. onInput and onChange both listen for keystrokes but onChange is universal for all input types including dropdowns.
