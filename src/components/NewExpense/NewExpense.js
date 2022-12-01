@@ -2,40 +2,49 @@ import "./NewExpense.css";
 import { useState } from "react";
 
 function NewExpense() {
-  // const [enteredTitle, setEnteredTitle] = useState("");
-  // const [enteredAmount, setEnteredAmount] = useState("");
-  // const [enteredDate, setEnteredDate] = useState("");
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
   // useState to save form value into a variable if component reloads
-  const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });
-  // All 3 states related to store user input form- so use 1 State which stores others in a State object
   // initial state of input should be empty string as nothing is entered. Value of changeevent inputs are ALWAYS STRING
+  
+  // const [userInput, setUserInput] = useState({
+  //   enteredTitle: "",
+  //   enteredAmount: "",
+  //   enteredDate: "",
+  // });
+  // Alternate state method- All 3 states related to store user input form- can use 1 State which stores others into a State Object. HOWEVER this 1 combined state WILL result in depending on an old snapshot of state when updating current state
 
   function titleChangeHandler(event) {
-    // setEnteredTitle(event.target.value) Repeat this line for other 2 States IF USING individual State slices method
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
-    });
+    setEnteredTitle(event.target.value);
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+    // Above technique may not obtain latest state snapshot as react schedules state updates and if lots of states are scheduled it may obtain an older state than the latest when copying in old states via spread oeprator in the combined state approach
+    
+    // setUserInput(function (prevState) {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
+    // Using prevState will guarantee using using the most recent state snapshot when updating current state. USE THIS when updating state thats dependent on previous state
   }
   // spread operator extracts and retains the other saved values in userInput i.e enteredAmount and enteredDate
   // Spread operator first as it saves all 3 userInput state object values and just overwrites the enteredTitle
 
   function amountChangeHandler(event) {
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value,
-    });
+    setEnteredAmount(event.target.value)
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value,
+    // });
   }
 
   function dateChangeHandler(event) {
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value,
-    });
+    setEnteredDate(event.target.value)
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value,
+    // });
   }
 
   return (
