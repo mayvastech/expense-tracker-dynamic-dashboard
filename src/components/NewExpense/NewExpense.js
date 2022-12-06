@@ -57,9 +57,13 @@ function NewExpense() {
     };
 
     console.log(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   }
   // When form is submitted it will gather the 3 current state user-input values and combine them into 1 Object expenseData.
   // Prevent browser request being sent to server hosting the webpage (dev server in this case) resulting in page reloading. We want to manually handle the submission with JS to collect the data
+  // Resetting entered input fields to an empty string via 2-way binding
 
   return (
     <div className="new-expense">
@@ -68,7 +72,11 @@ function NewExpense() {
           {/* Form Input Controls */}
           <div className="new-expense__control">
             <label htmlFor="">Title</label>
-            <input type="text" onChange={titleChangeHandler} />
+            <input
+              type="text"
+              value={enteredTitle}
+              onChange={titleChangeHandler}
+            />
           </div>
 
           <div className="new-expense__control">
@@ -77,6 +85,7 @@ function NewExpense() {
               type="number"
               min="0.01"
               step="0.01"
+              value={enteredAmount}
               onChange={amountChangeHandler}
             />
           </div>
@@ -87,6 +96,7 @@ function NewExpense() {
               type="date"
               min="2019-01-01"
               max="2022-12-31"
+              value={enteredDate}
               onChange={dateChangeHandler}
             />
           </div>
