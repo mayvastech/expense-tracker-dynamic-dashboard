@@ -49,7 +49,7 @@ function NewExpense() {
 
   function submitHandler(event) {
     event.preventDefault();
-
+    // Prevent browser request being sent to server hosting the webpage (dev server in this case) resulting in page reloading. We want to manually handle the submission with JS to collect the data
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
@@ -62,7 +62,6 @@ function NewExpense() {
     setEnteredDate("");
   }
   // When form is submitted it will gather the 3 current state user-input values and combine them into 1 Object expenseData.
-  // Prevent browser request being sent to server hosting the webpage (dev server in this case) resulting in page reloading. We want to manually handle the submission with JS to collect the data
   // Resetting entered input fields to an empty string via 2-way binding
 
   return (
