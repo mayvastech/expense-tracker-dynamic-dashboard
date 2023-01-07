@@ -54,6 +54,7 @@ function NewExpense() {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
+      id: Math.random().toString(),
     };
 
     console.log(expenseData);
