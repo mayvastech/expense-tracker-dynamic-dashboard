@@ -1,7 +1,7 @@
 import "./NewExpense.css";
 import { useState } from "react";
 
-function NewExpense() {
+function NewExpense(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -54,7 +54,7 @@ function NewExpense() {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
-      id: Math.random().toString(),
+      // id: Math.random().toString(),
     };
 
     console.log(expenseData);
