@@ -54,7 +54,7 @@ function NewExpense(props) {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
-      // id: Math.random().toString(),
+      id: Math.random().toString(),
     };
 
     console.log(expenseData);
