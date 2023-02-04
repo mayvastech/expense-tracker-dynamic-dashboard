@@ -1,13 +1,13 @@
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../UI/Card";
-import ExpensesFilter from "./ExpenseFilter";
+import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
   return (
     <div>
-      <ExpensesFilter />
       <Card className="expenses">
+        <ExpensesFilter />
         <ExpenseItem
           title={props.allexpenses[0].title}
           amount={props.allexpenses[0].amount}

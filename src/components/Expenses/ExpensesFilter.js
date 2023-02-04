@@ -1,4 +1,4 @@
-import "./ExpenseFilter.css";
+import "./ExpensesFilter.css";
 
 function ExpensesFilter() {
     function filterChangeHandler(event) {
