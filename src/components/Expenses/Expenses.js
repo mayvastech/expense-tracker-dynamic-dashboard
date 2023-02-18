@@ -15,11 +15,12 @@ function Expenses(props) {
     <div>
       <Card className="expenses">
         <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
-        {props.allexpenses.map(expense => <ExpenseItem title={expense.title} amount={expense.amount} date={expense.date} />)}
+        {props.allexpenses.map(expense => <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />)}
       </Card>
     </div>
   );
 }
 export default Expenses;
 
-// map method cycles through every item in our expenses array of objects and transforms each item into ExpenseItem jsx elements in a new array.
+// Map method cycles through every item in our expenses array of objects and transforms each item into ExpenseItem jsx elements in a new array.
+// Key prop is a unique value- helps react identify the individual items to update and render lists correctly
