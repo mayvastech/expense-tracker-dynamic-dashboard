@@ -58,6 +58,7 @@ function NewExpense(props) {
     };
 
     console.log(expenseData);
+    props.onAddExpense(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
