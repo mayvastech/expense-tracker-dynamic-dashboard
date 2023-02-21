@@ -57,6 +57,7 @@ function NewExpense(props) {
       date: new Date(enteredDate),
       id: Math.random().toString(),
     };
+    setIsEditing(false);
 
     console.log(expenseData);
     props.onAddExpense(expenseData);
@@ -68,13 +69,17 @@ function NewExpense(props) {
   // Resetting entered input fields to an empty string via 2-way binding
 
   function startEditingHandler() {
-    setIsEditing(true)
+    setIsEditing(true);
+  }
+
+  function stopEditingHandler() {
+    setIsEditing(false);
   }
 
   return (
     <div className="new-expense">
       {!isEditing && <button onClick={startEditingHandler}>Add New Expense</button>}
-      {isEditing && <form onSubmit={submitHandler}>
+      {isEditing && <form onSubmit={submitHandler} onCancel={stopEditingHandler}>
         <div className="new-expense__controls">
           {/* Form Input Controls */}
           <div className="new-expense__control">
@@ -109,6 +114,7 @@ function NewExpense(props) {
           </div>
         </div>
         <div className="new-expense__actions">
+          <button type="button" onClick={stopEditingHandler}>Cancel</button>
           <button type="submit">Add Expense</button>
         </div>
       </form>}
