@@ -2,6 +2,7 @@ import "./NewExpense.css";
 import { useState } from "react";
 
 function NewExpense(props) {
+  const [isEditing, setIsEditing] = useState(false);
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -66,9 +67,14 @@ function NewExpense(props) {
   // When form is submitted it will gather the 3 current state user-input values and combine them into 1 Object expenseData.
   // Resetting entered input fields to an empty string via 2-way binding
 
+  function startEditingHandler() {
+    setIsEditing(true)
+  }
+
   return (
     <div className="new-expense">
-      <form onSubmit={submitHandler}>
+      {!isEditing && <button onClick={startEditingHandler}>Add New Expense</button>}
+      {isEditing && <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
           {/* Form Input Controls */}
           <div className="new-expense__control">
@@ -105,7 +111,7 @@ function NewExpense(props) {
         <div className="new-expense__actions">
           <button type="submit">Add Expense</button>
         </div>
-      </form>
+      </form>}
     </div>
   );
 }
