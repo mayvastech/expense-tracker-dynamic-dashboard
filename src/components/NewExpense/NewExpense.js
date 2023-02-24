@@ -53,7 +53,7 @@ function NewExpense(props) {
     // Prevent browser request being sent to server hosting the webpage (dev server in this case) resulting in page reloading. We want to manually handle the submission with JS to collect the data
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
       id: Math.random().toString(),
     };
