@@ -1,5 +1,6 @@
 {
-  "name": "react-complete-guide",
+  "homepage": "https://mayvastech.github.io/expense-tracker-dynamic-dashboard",
+  "name": "expense-tracker-dynamic-dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
